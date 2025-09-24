@@ -1,0 +1,99 @@
+Probleme 
+On veut écrire un programme en C qui calcule le produit 
+a×b pour 𝑎,𝑏>0 en n’utilisant que l’opérateur ++ (incrément de 1).
+Donc :
+Pas de + entre deux nombres, sauf implicitement dans ++.
+Pas de * pour la multiplication.
+
+Étapes de la solution
+1. Recréer l’addition
+On a besoin d’une fonction qui simule x + y en ajoutant 1 à x, y fois.
+C’est la fonction :
+
+unsigned long long add_by_inc(unsigned long long x, unsigned long long y) {
+    unsigned long long i = 0;
+    while (i < y) {
+        ++x;   // On ajoute +1 à x
+        ++i;   // On répète jusqu’à avoir ajouté y fois
+    }
+    return x;
+}
+
+
+Exemple : add_by_inc(3, 2) fait :
+
+i=0 : x=4
+
+i=1 : x=5
+Résultat = 5.
+
+2. Recréer la multiplication
+
+Pour multiplier 𝑎×𝑏
+a×b, il suffit de faire b additions de a.
+C’est ce que fait :
+
+unsigned long long mul_by_add(unsigned long long a, unsigned long long b) {
+    unsigned long long result = 0;
+    unsigned long long i = 0;
+    while (i < b) {
+        result = add_by_inc(result, a); // On ajoute a au résultat
+        ++i; // On répète b fois
+    }
+    return result;
+}
+
+
+Exemple : mul_by_add(3, 4) fait :
+
+i=0 : result = 0 + 3 = 3
+
+i=1 : result = 3 + 3 = 6
+
+i=2 : result = 6 + 3 = 9
+
+i=3 : result = 9 + 3 = 12
+Résultat = 12.
+
+3. Programme principal
+int main(void) {
+    unsigned long long a, b;
+    if (scanf("%llu %llu", &a, &b) != 2) {
+        fprintf(stderr, "Entrée invalide\n");
+        return 1;
+    }
+
+
+Lecture de a et b (des entiers non signés de grande taille).
+
+Vérification que l’entrée est correcte.
+
+    if (a == 0 || b == 0) {
+        printf("0\n");
+        return 0;
+    }
+
+
+Cas particulier : si l’un des deux est nul, le produit est 0.
+
+    if (a > ULLONG_MAX / b) {
+        fprintf(stderr, "Overflow possible pour %llu * %llu\n", a, b);
+        return 1;
+    }
+
+
+Vérifie qu’on ne dépasse pas la capacité maximale d’un unsigned long long.
+
+    unsigned long long prod = mul_by_add(a, b);
+    printf("%llu\n", prod);
+    return 0;
+}
+
+
+Calcule le produit grâce à mul_by_add.
+
+Affiche le résultat.
+
+Exemple d’exécution
+Entrée : 5 7
+Sortie : 35
