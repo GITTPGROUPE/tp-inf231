@@ -2,27 +2,30 @@
 
 ## Fonction median()
 ## Objectif
- La fonction median() calcule la médiane d’un tableau d’éléments numériques.
+ ## Fonction rechercheSequentielle()
+### Objectif
+La fonction rechercheSequentielle() permet de rechercher une valeur donnée dans un tableau en vérifiant chaque élément un par un.
+Si la valeur est trouvée, la fonction retourne généralement la position de l’élément ; sinon, elle indique que l’élément n’existe pas dans le tableau.
 
-    * La médiane est la valeur qui partage le tableau en deux parties égales
-    * La moitié des valeurs est inférieure ou égale à la médiane.
-    * L’autre moitié est supérieure ou égale à la médiane.
+### Fonctionnement
+* On commence à parcourir le tableau à partir du premier élément.
+* Pour chaque élément, on compare avec la valeur recherchée.
+* Si une correspondance est trouvée :
+* La recherche s’arrête.
+* On retourne l’index (la position) de l’élément.
+* Si on arrive à la fin sans trouver la valeur :
+* On retourne une indication comme -1 pour dire "non trouvé".
 
-## Fonctionnement:
-    Trier le tableau en ordre croissant.
-    Compter le nombre d’éléments du tableau (n).
-    Si n est impair :
-    La médiane est l’élément du milieu.
-    Si n est pair :
-    La médiane est la moyenne des deux éléments du milieu.
+### Exemple
 
-## Exemple:
-    Tableau : {7, 1, 5, 3, 9}
-    Après tri : {1, 3, 5, 7, 9}
-    n = 5 (impair) , Médiane = 5
-    Tableau : {7, 1, 5, 3}
-    Après tri : {1, 3, 5, 7}
-    n = 4 (pair) , Médiane = (3 + 5)/2 = 4
+* Tableau : {10, 25, 30, 50}
+* Valeur recherchée : 30
+
+#### Étapes de la recherche :
+    10 != 30 = continuer
+    25 != 30 = continuer
+    30 == 30 = trouvé à l’index 2
+    Résultat : position = 2
 
 ## Fonction  produitvectoriel()
 ## Objectif :
