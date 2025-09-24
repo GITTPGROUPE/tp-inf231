@@ -2,6 +2,8 @@
 
 il etait question pour nouss de réaliser un programme permettant d'effectuer des operations sur des matrices et des tableaux. La partie du programme me concernant etait les fonctions : 
 
+2. produit de matrice
+   
 La fonction produit_matrices calcule le produit matriciel de A et B et le stocke dans C. Il est important de noter que pour le produit de deux matrices, le nombre de colonnes de la première matrice doit être égal au nombre de lignes de la seconde. Le code vérifie cela implicitement en utilisant colonnesA et lignesB. Le résultat est une matrice avec le nombre de lignes de A et le nombre de colonnes de B.
 
 7. Inversion de tableau
